@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  SignInViewController.swift
 //  MyWeatherApp
 //
 //  Created by 123 on 27.06.17.
@@ -12,7 +12,7 @@ import FirebaseAuth
 import SwiftKeychainWrapper
 
 
-class SignInVC: UIViewController {
+class SignInViewController: UIViewController {
     
     let facebookButton: UIButton = {
         let button = UIButton()
@@ -38,6 +38,13 @@ class SignInVC: UIViewController {
         navigationItem.title = "My Weather App"
         
         setupFacebookButton()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        if let _ = KeychainWrapper.standard.string(forKey: "uid"){
+            let navController = UINavigationController(rootViewController: CitiesDatasourceController())
+            present(navController, animated: true, completion: nil)
+        }
     }
     
     func setupFacebookButton() {
@@ -80,7 +87,7 @@ class SignInVC: UIViewController {
     
     func completeSignIn(id: String) {
         KeychainWrapper.standard.set(id, forKey: "uid")
-        let navController = UINavigationController(rootViewController: UIViewController())
+        let navController = UINavigationController(rootViewController: CitiesDatasourceController())
         present(navController, animated: true, completion: nil)
     }
 

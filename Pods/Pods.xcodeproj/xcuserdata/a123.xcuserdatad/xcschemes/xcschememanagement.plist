@@ -34,6 +34,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>LBTAComponents.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-MyWeatherApp.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -52,7 +57,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>173A3C7F2FB7BC73E37EEDD30487BC27</key>
+		<key>17EEA0C6570C779CEB57C83B445CFE6A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>1A196107BC8DB338FC11C9CE9510573C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -62,7 +72,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>9F100C2C49109B740FF4DA705902F6AF</key>
+		<key>69B1785828194DE68846E58367A1172D</key>
 		<dict>
 			<key>primary</key>
 			<true/>

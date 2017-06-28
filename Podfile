@@ -13,5 +13,6 @@ pod ‘Firebase/Core’
 pod ‘Firebase/Auth’
 pod ‘Firebase/Database’
 pod ‘SwiftKeychainWrapper’
+pod ‘LBTAComponents’
 
 end
