@@ -9,5 +9,7 @@ target 'MyWeatherApp' do
 pod 'FBSDKCoreKit'
 pod 'FBSDKShareKit'
 pod 'FBSDKLoginKit'
+pod 'Firebase'
+pod ‘Firebase/Auth’
 
 end
