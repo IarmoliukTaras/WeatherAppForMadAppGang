@@ -20,7 +20,10 @@ class CityHeader: DatasourceCell {
     }()
     
     let addButton: UIButton = {
-        let button = UIButton.systemButton(title: "Add", image: nil, titleColor: .black, font: nil, target: self, selector: #selector(addPressed))
+        let button = UIButton()
+        button.setTitle("ADD", for: .normal)
+        button.setTitleColor(.black, for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 16)
         button.layer.cornerRadius = 5
         button.layer.borderColor = UIColor.black.cgColor
         button.layer.borderWidth = 1
@@ -39,8 +42,8 @@ class CityHeader: DatasourceCell {
     }
     
     func addPressed() {
-        print("ADDDD")
         guard let city = cityNameTextField.text else { return }
         DataService.dataService.addCity(cityName: city)
+        cityNameTextField.text = ""
     }
 }

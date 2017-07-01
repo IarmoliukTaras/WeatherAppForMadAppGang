@@ -25,7 +25,6 @@ class DataService {
     var CURRENT_USER_REF: FIRDatabaseReference {
         let uid = KeychainWrapper.standard.string(forKey: "uid")
         let user = USER_REF.child(uid!)
-        print(uid!)
         return user
     }
     
@@ -48,6 +47,10 @@ class DataService {
             datasource.cities = array
             completed()
         })
+    }
+    
+    func removeCity(name: String) {
+        DataService.dataService.CURRENT_USER_CITIES_REF.child(name).removeValue()
     }
 
 }
