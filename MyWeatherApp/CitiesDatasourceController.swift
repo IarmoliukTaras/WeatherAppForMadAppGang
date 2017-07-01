@@ -7,14 +7,22 @@
 //
 
 import LBTAComponents
+import FirebaseDatabase
 
 class CitiesDatasourceController: DatasourceController {
     
+    override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
+        collectionViewLayout.invalidateLayout()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         let datasource = CitiesDatasource()
         self.datasource = datasource
+        
+        DataService.dataService.observeCities(datasource: datasource) {
+            self.collectionView?.reloadData()
+        }
         
         setupNavigationBarItems()
     }
@@ -23,18 +31,17 @@ class CitiesDatasourceController: DatasourceController {
         return CGSize(width: view.frame.width, height: 100)
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return CGSize(width: view.frame.width, height: 50)
+    }
+    
     func setupNavigationBarItems() {
         navigationItem.title = "Cities"
-        
-        let menuButton = UIButton()
-        menuButton.setImage(#imageLiteral(resourceName: "menu").withRenderingMode(.alwaysOriginal), for: .normal)
-        menuButton.frame = CGRect(x: 0, y: 0, width: 34, height: 34)
-        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: menuButton)
-        
-        let plusButton = UIButton()
-        plusButton.setImage(#imageLiteral(resourceName: "plus").withRenderingMode(.alwaysOriginal), for: .normal)
-        plusButton.frame = CGRect(x: 0, y: 0, width: 34, height: 34)
-        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: plusButton)
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "menu").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(menuPressed))
+    }
+    
+    func menuPressed() {
+        print("menu pressed")
         
     }
     

@@ -7,10 +7,22 @@
 //
 
 import LBTAComponents
+import FirebaseDatabase
 
 class CitiesDatasource: Datasource {
+    
+    var cities = [String]()
+    
+    override func item(_ indexPath: IndexPath) -> Any? {
+        return cities[indexPath.row]
+    }
+    
     override func cellClasses() -> [DatasourceCell.Type] {
         return [CityCell.self]
+    }
+    
+    override func headerClasses() -> [DatasourceCell.Type]? {
+        return [CityHeader.self]
     }
     
     override func numberOfSections() -> Int {
@@ -18,7 +30,6 @@ class CitiesDatasource: Datasource {
     }
     
     override func numberOfItems(_ section: Int) -> Int {
-        return 2
+        return cities.count
     }
-    
 }
