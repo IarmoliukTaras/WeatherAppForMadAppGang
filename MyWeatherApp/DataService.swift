@@ -12,8 +12,6 @@ import SwiftKeychainWrapper
 
 class DataService {
     
-    typealias DownloadComplete = () -> ()
-    
     static let dataService = DataService()
     
     private var _USER_REF = FIRDatabase.database().reference().child("users")
@@ -36,7 +34,7 @@ class DataService {
         CURRENT_USER_REF.child("cities").updateChildValues([cityName: cityName])
     }
     
-    func observeCities(datasource: CitiesDatasource, completed: @escaping DownloadComplete) {
+    func observeCities(completed: @escaping ([String]) -> ()) {
         DataService.dataService.CURRENT_USER_CITIES_REF.observe(.value, with: {(snapshot) in
             var array = [String]()
             if let snapshot = snapshot.children.allObjects as? [FIRDataSnapshot] {
@@ -44,8 +42,7 @@ class DataService {
                     array.append(snap.key)
                 }
             }
-            datasource.cities = array
-            completed()
+            completed(array)
         })
     }
     

@@ -11,10 +11,10 @@ import FirebaseDatabase
 
 class CitiesDatasource: Datasource {
     
-    var cities = [String]()
+    var citiesNames = [String]()
     
     override func item(_ indexPath: IndexPath) -> Any? {
-        return cities[indexPath.row]
+        return citiesNames[indexPath.row]
     }
     
     override func cellClasses() -> [DatasourceCell.Type] {
@@ -30,6 +30,6 @@ class CitiesDatasource: Datasource {
     }
     
     override func numberOfItems(_ section: Int) -> Int {
-        return cities.count
+        return citiesNames.count
     }
 }

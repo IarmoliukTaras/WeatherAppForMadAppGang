@@ -20,7 +20,8 @@ class CitiesDatasourceController: DatasourceController {
         let datasource = CitiesDatasource()
         self.datasource = datasource
         
-        DataService.dataService.observeCities(datasource: datasource) {
+        DataService.dataService.observeCities() { citiesNames in
+            datasource.citiesNames = citiesNames
             self.collectionView?.reloadData()
         }
         

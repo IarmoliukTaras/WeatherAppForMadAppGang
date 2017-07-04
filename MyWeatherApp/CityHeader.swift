@@ -43,7 +43,11 @@ class CityHeader: DatasourceCell {
     
     func addPressed() {
         guard let city = cityNameTextField.text else { return }
-        DataService.dataService.addCity(cityName: city)
+        WeatherService.sharedInstance.checkCity(name: city) { (answer) in
+            if answer == true {
+                DataService.dataService.addCity(cityName: city)
+            }
+        }
         cityNameTextField.text = ""
     }
 }
