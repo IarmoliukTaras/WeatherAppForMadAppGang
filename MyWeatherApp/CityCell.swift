@@ -56,7 +56,7 @@ class CityCell: DatasourceCell {
         addSubview(conditionLabel)
         addSubview(removeButton)
         
-        conditionLabel.anchor(self.topAnchor, left: nil, bottom: self.bottomAnchor, right: self.rightAnchor, topConstant: 15, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 100, heightConstant: 0)
+        conditionLabel.anchor(self.topAnchor, left: nil, bottom: self.bottomAnchor, right: self.rightAnchor, topConstant: 15, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 150, heightConstant: 0)
         dayWeatherLabel.anchor(self.topAnchor, left: nil, bottom: self.bottomAnchor, right: conditionLabel.leftAnchor, topConstant: 15, leftConstant: 0, bottomConstant: 0, rightConstant: 4, widthConstant: 100, heightConstant: 0)
         nameLabel.anchor(self.topAnchor, left: self.leftAnchor, bottom: self.bottomAnchor, right: dayWeatherLabel.leftAnchor, topConstant: 15, leftConstant: 4, bottomConstant: 0, rightConstant: 4, widthConstant: 0, heightConstant: 0)
         removeButton.anchor(self.topAnchor, left: nil, bottom: conditionLabel.topAnchor, right: self.rightAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 4, widthConstant: 15, heightConstant: 0)

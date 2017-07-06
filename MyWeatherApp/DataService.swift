@@ -42,7 +42,9 @@ class DataService {
                     array.append(snap.key)
                 }
             }
-            completed(array)
+            DispatchQueue.main.async {
+                completed(array)
+            }
         })
     }
     

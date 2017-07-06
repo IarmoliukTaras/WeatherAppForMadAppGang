@@ -15,12 +15,15 @@ class CitiesDatasourceController: DatasourceController {
         collectionViewLayout.invalidateLayout()
     }
     
+    var citiesName = [String]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let datasource = CitiesDatasource()
         self.datasource = datasource
         
         DataService.dataService.observeCities() { citiesNames in
+            self.citiesName = citiesNames
             datasource.citiesNames = citiesNames
             self.collectionView?.reloadData()
         }
@@ -34,6 +37,16 @@ class CitiesDatasourceController: DatasourceController {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         return CGSize(width: view.frame.width, height: 50)
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let selectedCity = self.citiesName[indexPath.row]
+        
+        let weatherPageController = ForecastController()
+        
+        weatherPageController.cityName = selectedCity
+        let navController = UINavigationController(rootViewController: weatherPageController)
+        present(navController, animated: false, completion: nil)
     }
     
     func setupNavigationBarItems() {

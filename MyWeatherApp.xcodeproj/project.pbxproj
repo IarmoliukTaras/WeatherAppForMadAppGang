@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		208A54DA85D0BAAC0346652F /* Pods_MyWeatherApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7E0FDDB271ECEDDEE684198 /* Pods_MyWeatherApp.framework */; };
 		9D0354621F0A2C3B00A9B97A /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0354611F0A2C3B00A9B97A /* City.swift */; };
+		9D0354641F0BD0B900A9B97A /* ForecastController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0354631F0BD0B900A9B97A /* ForecastController.swift */; };
+		9D0354661F0BD12C00A9B97A /* ForecastDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0354651F0BD12C00A9B97A /* ForecastDatasource.swift */; };
+		9DED98AF1F0CDD9100275725 /* Forecastday.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DED98AE1F0CDD9100275725 /* Forecastday.swift */; };
+		9DED98B11F0D052C00275725 /* ForecastCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DED98B01F0D052C00275725 /* ForecastCell.swift */; };
 		9DFC75F21F029D110060EA56 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFC75F11F029D110060EA56 /* AppDelegate.swift */; };
 		9DFC75F41F029D110060EA56 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFC75F31F029D110060EA56 /* SignInViewController.swift */; };
 		9DFC75FA1F029D110060EA56 /* MyWeatherApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9DFC75F81F029D110060EA56 /* MyWeatherApp.xcdatamodeld */; };
@@ -26,6 +30,10 @@
 
 /* Begin PBXFileReference section */
 		9D0354611F0A2C3B00A9B97A /* City.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
+		9D0354631F0BD0B900A9B97A /* ForecastController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForecastController.swift; sourceTree = "<group>"; };
+		9D0354651F0BD12C00A9B97A /* ForecastDatasource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForecastDatasource.swift; sourceTree = "<group>"; };
+		9DED98AE1F0CDD9100275725 /* Forecastday.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Forecastday.swift; sourceTree = "<group>"; };
+		9DED98B01F0D052C00275725 /* ForecastCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForecastCell.swift; sourceTree = "<group>"; };
 		9DFC75EE1F029D110060EA56 /* MyWeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyWeatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DFC75F11F029D110060EA56 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9DFC75F31F029D110060EA56 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
@@ -110,6 +118,7 @@
 			children = (
 				9DFC75F31F029D110060EA56 /* SignInViewController.swift */,
 				9DFC760F1F043C380060EA56 /* CitiesDatasourceController.swift */,
+				9D0354631F0BD0B900A9B97A /* ForecastController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -119,6 +128,7 @@
 			children = (
 				9DFC76131F0446B60060EA56 /* CityCell.swift */,
 				9DFC76171F0792AE0060EA56 /* CityHeader.swift */,
+				9DED98B01F0D052C00275725 /* ForecastCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -128,6 +138,8 @@
 			children = (
 				9DFC76111F043C670060EA56 /* CitiesDatasource.swift */,
 				9D0354611F0A2C3B00A9B97A /* City.swift */,
+				9D0354651F0BD12C00A9B97A /* ForecastDatasource.swift */,
+				9DED98AE1F0CDD9100275725 /* Forecastday.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -282,11 +294,15 @@
 				9DFC76101F043C380060EA56 /* CitiesDatasourceController.swift in Sources */,
 				9DFC761C1F080BA00060EA56 /* WeatherService.swift in Sources */,
 				9DFC75F41F029D110060EA56 /* SignInViewController.swift in Sources */,
+				9D0354641F0BD0B900A9B97A /* ForecastController.swift in Sources */,
+				9DED98B11F0D052C00275725 /* ForecastCell.swift in Sources */,
 				9DFC76181F0792AE0060EA56 /* CityHeader.swift in Sources */,
 				9DFC75FA1F029D110060EA56 /* MyWeatherApp.xcdatamodeld in Sources */,
 				9DFC76121F043C670060EA56 /* CitiesDatasource.swift in Sources */,
+				9DED98AF1F0CDD9100275725 /* Forecastday.swift in Sources */,
 				9D0354621F0A2C3B00A9B97A /* City.swift in Sources */,
 				9DFC75F21F029D110060EA56 /* AppDelegate.swift in Sources */,
+				9D0354661F0BD12C00A9B97A /* ForecastDatasource.swift in Sources */,
 				9DFC76141F0446B60060EA56 /* CityCell.swift in Sources */,
 				9DFC760E1F0403CF0060EA56 /* DataService.swift in Sources */,
 			);

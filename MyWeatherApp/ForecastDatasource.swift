@@ -1,28 +1,23 @@
 //
-//  CitiesDatasource.swift
+//  ForecastDatasource.swift
 //  MyWeatherApp
 //
-//  Created by 123 on 28.06.17.
+//  Created by 123 on 04.07.17.
 //  Copyright © 2017 taras team. All rights reserved.
 //
 
 import LBTAComponents
-import FirebaseDatabase
 
-class CitiesDatasource: Datasource {
+class ForecastDatasource: Datasource {
     
-    var citiesNames = [String]()
-    
+    var forecasts = [Forecastday]()
+
     override func item(_ indexPath: IndexPath) -> Any? {
-        return citiesNames[indexPath.row]
+        return forecasts[indexPath.row]
     }
     
     override func cellClasses() -> [DatasourceCell.Type] {
-        return [CityCell.self]
-    }
-    
-    override func headerClasses() -> [DatasourceCell.Type]? {
-        return [CityHeader.self]
+        return [ForecastCell.self]
     }
     
     override func numberOfSections() -> Int {
@@ -30,7 +25,6 @@ class CitiesDatasource: Datasource {
     }
     
     override func numberOfItems(_ section: Int) -> Int {
-        return citiesNames.count
+        return forecasts.count
     }
-    
 }
