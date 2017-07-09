@@ -8,6 +8,8 @@
 
 import LBTAComponents
 import FirebaseDatabase
+import FirebaseAuth
+import SwiftKeychainWrapper
 
 class CitiesDatasourceController: DatasourceController {
     
@@ -51,11 +53,14 @@ class CitiesDatasourceController: DatasourceController {
     
     func setupNavigationBarItems() {
         navigationItem.title = "Cities"
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "menu").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(menuPressed))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(menuPressed))
     }
     
     func menuPressed() {
-        print("menu pressed")
+        let keychainResult = KeychainWrapper.standard.removeObject(forKey: "uid")
+        print(keychainResult)
+        try! FIRAuth.auth()?.signOut()
+        dismiss(animated: false, completion: nil)
         
     }
     

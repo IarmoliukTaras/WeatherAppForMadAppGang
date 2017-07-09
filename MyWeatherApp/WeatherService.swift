@@ -70,7 +70,7 @@ class WeatherService {
             
         }).resume()
     }
-    
+
     func checkCity(name: String, completion: @escaping (Bool) -> Void) {
         let fullUrl = self.getFullUrl(cityName: name)
         var answer = true
