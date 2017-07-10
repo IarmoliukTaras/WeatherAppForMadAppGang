@@ -1,4 +1,4 @@
-//
+
 //  CitiesDatasourceController.swift
 //  MyWeatherApp
 //
@@ -17,19 +17,31 @@ class CitiesDatasourceController: DatasourceController {
         collectionViewLayout.invalidateLayout()
     }
     
-    var citiesName = [String]()
+    let citiesDatasource = CitiesDatasource()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let datasource = CitiesDatasource()
-        self.datasource = datasource
-        
-        DataService.dataService.observeCities() { citiesNames in
-            self.citiesName = citiesNames
-            datasource.citiesNames = citiesNames
-            self.collectionView?.reloadData()
+        self.datasource = citiesDatasource
+    
+        DispatchQueue.global(qos: .background).async {
+            DataService.dataService.observeCities() { citiesNames in
+                self.citiesDatasource.cities.removeAll()
+                
+                for name in citiesNames {
+                    WeatherService.sharedInstance.getForecast(cityName: name, completion: { (dictionary) in
+                        let city = City.init(dictionary: dictionary)
+                        self.citiesDatasource.cities.append(city)
+                        
+                        DispatchQueue.main.async {
+                            self.collectionView?.reloadData()
+                        }
+                    })
+                }
+                DispatchQueue.main.async {
+                    self.collectionView?.reloadData()
+                }
+            }
         }
-        
         setupNavigationBarItems()
     }
     
@@ -42,21 +54,21 @@ class CitiesDatasourceController: DatasourceController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let selectedCity = self.citiesName[indexPath.row]
+        let selectedCity = citiesDatasource.cities[indexPath.row]
         
         let weatherPageController = ForecastController()
         
-        weatherPageController.cityName = selectedCity
+        weatherPageController.city = selectedCity
         let navController = UINavigationController(rootViewController: weatherPageController)
         present(navController, animated: false, completion: nil)
     }
     
     func setupNavigationBarItems() {
         navigationItem.title = "Cities"
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(menuPressed))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(logoutPressed))
     }
     
-    func menuPressed() {
+    func logoutPressed() {
         let keychainResult = KeychainWrapper.standard.removeObject(forKey: "uid")
         print(keychainResult)
         try! FIRAuth.auth()?.signOut()

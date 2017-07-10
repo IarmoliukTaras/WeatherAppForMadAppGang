@@ -16,17 +16,19 @@ class ForecastCell: DatasourceCell {
             dateLabel.text = forecast.date
             minTempLabel.text = String(forecast.mintemp).appending("°")
             maxTempLabel.text = String(forecast.maxtemp).appending("°")
-            
-            WeatherService.sharedInstance.downloadImage(urlStr: forecast.imageUrl) { (data) in
-                let image = UIImage(data: data)
-                self.conditionImage.image = image
+            DispatchQueue.global(qos: .background).async {
+                WeatherService.sharedInstance.downloadImage(urlStr: forecast.imageUrl) { (data) in
+                    let image = UIImage(data: data)
+                    DispatchQueue.main.async {
+                        self.conditionImage.image = image
+                    }
+                }
             }
         }
     }
     
     var conditionImage: UIImageView = {
         let imageView = UIImageView()
-//        imageView.backgroundColor = .yellow
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()

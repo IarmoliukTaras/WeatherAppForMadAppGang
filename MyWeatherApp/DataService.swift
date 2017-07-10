@@ -36,15 +36,8 @@ class DataService {
     
     func observeCities(completed: @escaping ([String]) -> ()) {
         DataService.dataService.CURRENT_USER_CITIES_REF.observe(.value, with: {(snapshot) in
-            var array = [String]()
-            if let snapshot = snapshot.children.allObjects as? [FIRDataSnapshot] {
-                for snap in snapshot {
-                    array.append(snap.key)
-                }
-            }
-            DispatchQueue.main.async {
-                completed(array)
-            }
+            guard let dataSnapshot = snapshot.children.allObjects as? [FIRDataSnapshot] else { return }
+            completed(dataSnapshot.map{$0.key})
         })
     }
     

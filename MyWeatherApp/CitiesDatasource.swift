@@ -10,11 +10,11 @@ import LBTAComponents
 import FirebaseDatabase
 
 class CitiesDatasource: Datasource {
-    
-    var citiesNames = [String]()
+
+    var cities = [City]()
     
     override func item(_ indexPath: IndexPath) -> Any? {
-        return citiesNames[indexPath.row]
+        return cities[indexPath.row]
     }
     
     override func cellClasses() -> [DatasourceCell.Type] {
@@ -30,7 +30,7 @@ class CitiesDatasource: Datasource {
     }
     
     override func numberOfItems(_ section: Int) -> Int {
-        return citiesNames.count
+        return cities.count
     }
     
 }

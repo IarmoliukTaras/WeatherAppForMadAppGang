@@ -12,17 +12,12 @@ class CityCell: DatasourceCell {
     
     override var datasourceItem: Any? {
         didSet {
-            guard  let cityName = datasourceItem as? String else { return }
-            WeatherService.sharedInstance.getCurrentWeather(cityName: cityName) { (weatherInfo) in
-                self.city = City(weatherDic: weatherInfo)
-                self.nameLabel.text = self.city!.name
-                self.dayWeatherLabel.text = String(self.city!.temp).appending("°")
-                self.conditionLabel.text = self.city!.condition
-            }
+            guard let city = datasourceItem as? City else { return }
+            self.nameLabel.text = city.name
+            self.dayWeatherLabel.text = String(city.temp).appending("°")
+            self.conditionLabel.text = city.condition
         }
     }
-    
-    var city: City?
     
     let nameLabel: LBTALabel = {
         let label = LBTALabel(text: "Loading...", font: UIFont.boldSystemFont(ofSize: 16))
@@ -64,7 +59,8 @@ class CityCell: DatasourceCell {
     }
     
     func removeCity() {
-        DataService.dataService.removeCity(name: datasourceItem as! String)
+        guard let city = datasourceItem as? City else { return }
+        DataService.dataService.removeCity(name: city.name)
     }
     
 }
