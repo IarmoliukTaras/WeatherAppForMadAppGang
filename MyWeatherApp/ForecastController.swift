@@ -26,20 +26,18 @@ class ForecastController: DatasourceController {
         self.datasource = datasource
         
         view.addSubview(mapView)
+        mapView.anchor(view.topAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, topConstant: 40, leftConstant: 0, bottomConstant: 4, rightConstant: 0, widthConstant: 0, heightConstant: view.frame.height / 2)
         
         collectionView?.alwaysBounceVertical = false
         layout?.scrollDirection = .horizontal
         collectionView?.isPagingEnabled = true
         collectionView?.backgroundColor = .blue
-        collectionView?.anchor(view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, topConstant: 300, leftConstant: 0, bottomConstant: 200, rightConstant: 0, widthConstant: 0, heightConstant: 0)
+        collectionView?.anchor(mapView.bottomAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, topConstant: 8, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 0)
         
         automaticallyAdjustsScrollViewInsets = false
         
         navigationItem.title = city.name
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(backPressed))
-        
-        view.addSubview(mapView)
-        mapView.anchor(view.topAnchor, left: view.leftAnchor, bottom: collectionView?.topAnchor, right: view.rightAnchor, topConstant: 40, leftConstant: 0, bottomConstant: 4, rightConstant: 0, widthConstant: 0, heightConstant: 0)
         
         setRegion()
     }
@@ -53,6 +51,6 @@ class ForecastController: DatasourceController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 150, height: 150)
+        return CGSize(width: collectionView.frame.width / 2.3, height: collectionView.frame.height - 10)
     }
 }

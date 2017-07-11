@@ -13,10 +13,6 @@ import SwiftKeychainWrapper
 
 class CitiesDatasourceController: DatasourceController {
     
-    override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
-        collectionViewLayout.invalidateLayout()
-    }
-    
     let citiesDatasource = CitiesDatasource()
     
     override func viewDidLoad() {
@@ -43,6 +39,10 @@ class CitiesDatasourceController: DatasourceController {
             }
         }
         setupNavigationBarItems()
+    }
+    
+    override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
+        collectionViewLayout.invalidateLayout()
     }
     
     override func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

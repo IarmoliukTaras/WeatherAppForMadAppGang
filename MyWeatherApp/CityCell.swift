@@ -20,18 +20,19 @@ class CityCell: DatasourceCell {
     }
     
     let nameLabel: LBTALabel = {
-        let label = LBTALabel(text: "Loading...", font: UIFont.boldSystemFont(ofSize: 16))
+        let label = LBTALabel(text: "", font: UIFont.boldSystemFont(ofSize: 16))
         return label
     }()
 
     let dayWeatherLabel: LBTALabel = {
-        let label = LBTALabel(text: "Loading...", font: UIFont.boldSystemFont(ofSize: 16))
+        let label = LBTALabel(text: "", font: UIFont.boldSystemFont(ofSize: 16))
         label.textAlignment = .center
         return label
     }()
     
     let conditionLabel: LBTALabel = {
-        let label = LBTALabel(text: "Loading...", font: UIFont.boldSystemFont(ofSize: 16))
+        let label = LBTALabel(text: "", font: UIFont.boldSystemFont(ofSize: 16))
+        label.numberOfLines = 0
         return label
     }()
     
